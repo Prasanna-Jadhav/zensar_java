@@ -56,9 +56,14 @@ public class main {
                     }
                     case 7 -> logout();
                     case 8 -> {
-                        System.out.println("Exiting...");
-                        conn.close();
-                        return;
+                        if(loggedInUser==null) {
+                            System.out.println("Exiting...");
+                            conn.close();
+                            return;
+                        }
+                        else{
+                            System.out.println("You must log out first!");
+                        }
                     }
                     default -> System.out.println("Invalid option! Try again.");
                 }
