@@ -109,7 +109,7 @@ public class main {
     private static void viewAllCourses() {
         System.out.println("\nAvailable Courses:");
         for (Course course : Course.getAllCourses(conn)) {
-            System.out.println(course.getTitle() + " | Instructor: " + course.getInstructor() + " | Price: $" + course.getPrice());
+            System.out.println(course.getId()+"| "+course.getTitle() + " | Instructor: " + course.getInstructor() + " | Price: $" + course.getPrice());
         }
     }
 
