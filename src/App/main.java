@@ -56,9 +56,14 @@ public class main {
                     }
                     case 7 -> logout();
                     case 8 -> {
-                        System.out.println("Exiting...");
-                        conn.close();
-                        return;
+                        if(loggedInUser==null) {
+                            System.out.println("Exiting...");
+                            conn.close();
+                            return;
+                        }
+                        else{
+                            System.out.println("You must log out first!");
+                        }
                     }
                     default -> System.out.println("Invalid option! Try again.");
                 }
@@ -104,7 +109,7 @@ public class main {
     private static void viewAllCourses() {
         System.out.println("\nAvailable Courses:");
         for (Course course : Course.getAllCourses(conn)) {
-            System.out.println(course.getTitle() + " | Instructor: " + course.getInstructor() + " | Price: $" + course.getPrice());
+            System.out.println(course.getId()+"| "+course.getTitle() + " | Instructor: " + course.getInstructor() + " | Price: $" + course.getPrice());
         }
     }
 
