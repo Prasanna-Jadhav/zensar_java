@@ -74,4 +74,8 @@ public class Course {
     public String getDuration() {
         return duration;
     }
+
+    public int getId() {
+        return id;
+    }
 }

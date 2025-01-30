@@ -1,5 +1,9 @@
-package App;
-package courses;
+package App; 
+import courses.Course;
+import  courses.enrollment;
+import payments.payment;
+import users.user;
+
 
 
 import java.sql.*;
@@ -8,9 +12,9 @@ import java.util.Scanner;
 public class main {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/udemy_clone";
     private static final String DB_USER = "root"; // Change if needed
-    private static final String DB_PASSWORD = ""; // Change if needed
+    private static final String DB_PASSWORD = "qwer1234"; // Change if needed
     private static Connection conn;
-    private static User loggedInUser;
+    private static user loggedInUser;
 
     public static void main(String[] args) {
         try {
@@ -64,7 +68,7 @@ public class main {
         }
     }
 
-    private static boolean isAdmin(User user) {
+    private static boolean isAdmin(user user) {
         return user.getEmail().equals("admin@example.com");
     }
 
@@ -76,7 +80,7 @@ public class main {
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
-        if (User.register(name, email, password, conn)) {
+        if (user.register(name, email, password, conn)) {
             System.out.println("Registration successful!");
         } else {
             System.out.println("Registration failed.");
@@ -89,7 +93,7 @@ public class main {
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
-        loggedInUser = User.login(email, password, conn);
+        loggedInUser = user.login(email, password, conn);
         if (loggedInUser != null) {
             System.out.println("Login successful! Welcome, " + loggedInUser.getEmail());
         } else {
@@ -128,8 +132,8 @@ public class main {
 
         for (Course course : Course.getAllCourses(conn)) {
             if (courseId == course.getId()) {
-                Payment.makePayment(loggedInUser.getId(), courseId, course.getPrice(), conn);
-                Enrollment.enroll(loggedInUser.getId(), courseId, conn);
+                payment.makePayment(loggedInUser.getId(), courseId, course.getPrice(), conn);
+                enrollment.enroll(loggedInUser.getId(), courseId, conn);
                 System.out.println("Payment successful, enrolled in course: " + course.getTitle());
                 return;
             }

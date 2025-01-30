@@ -6,7 +6,7 @@ public class enrollment {
     private int userId;
     private int courseId;
 
-    public Enrollment(int userId, int courseId) {
+    public enrollment(int userId, int courseId) {
         this.userId = userId;
         this.courseId = courseId;
     }

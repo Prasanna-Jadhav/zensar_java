@@ -7,7 +7,7 @@ public class payment {
     private int courseId;
     private double amount;
 
-    public Payment(int userId, int courseId, double amount) {
+    public payment(int userId, int courseId, double amount) {
         this.userId = userId;
         this.courseId = courseId;
         this.amount = amount;

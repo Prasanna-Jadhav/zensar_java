@@ -8,14 +8,14 @@ public class user {
     private String email;
     private String password;
 
-    public User(int id, String name, String email, String password) {
+    public user(int id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public static User login(String email, String password, Connection conn) {
+    public static user login(String email, String password, Connection conn) {
         try {
             String query = "SELECT * FROM users WHERE email = ? AND password = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -24,7 +24,7 @@ public class user {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return new User(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("password"));
+                return new user(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
