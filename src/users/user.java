@@ -2,7 +2,7 @@ package users;
 
 import java.sql.*;
 
-public class User {
+public class user {
     private int id;
     private String name;
     private String email;
